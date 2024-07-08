@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Layout</title>
+
+        <style>
+            /* 블럭요소를 인라인요소로 변경 */
+            #aa{ display: inline; }
+            #aa{ display: inline; width: 300px;} /*inline요소는 크기설정 불가*/
+            #aa{ display: inline-block; width: 300px;} /*inline-block 요소는 크기설정 가능*/
+
+            /* 인라인요소를 블럭요소로 변경 */
+            .bb{ display: block; }
+
+            /* display:none 값 */
+            #cc{ display: none;}
+
+        </style>
+
+    </head>
+    <body>
+
+        <!-- display 속성 연습 -->
+        <p id="aa">Hello world</p>
+        <a href="">Google</a>
+        <strong>Good morning</strong>
+
+        <img src="./image/lion.png" alt="lion" class="bb">
+
+        <hr>
+
+        <ul>
+            <li>aaa</li>
+            <li id="cc">bbb</li>
+            <li>ccc</li>
+        </ul>
+
+        <hr>
+
+        <!-- 블럭요소와 인라인요소를 같이 사용할때 고려할 것들 -->
+
+        <!-- 1. 블럭요소안에 다른 인라인요소를 배치 -->
+        <div style="background-color: tomato; border: solid; padding: 5px">Nice <strong>aaa</strong>  world</div>
+
+        <!-- 2. 블럭요소안에 다른 블럭요소를 배치 -->
+        <div style="background-color: teal; border: solid; padding: 5px">Nice <p>aaa</p>  world</div>
+
+        <!-- 3. p 블럭요소안에 같은 p 블럭요소를 배치 -->
+        <p style="background-color: yellow; border: solid; padding: 5px">Nice <p>aaa</p> world</p>
+
+        <!-- 3-2 h1 블럭요소안에 같은 h1 블럭요소를 배치 -->
+        <h1>Nice <h1>aaa</h1>World</h1>
+
+        <!-- 3-3 h1 블럭요소안에 같은 p 블럭요소를 배치 -->
+        <h1 style="background-color: yellow; border: solid; padding: 5px">Nice <p>aaa</p> world</h1>
+
+        <!-- 4. 인라인요소 안에 블럭요소를 배치 - 권장하지 않음. 조금이상해짐-->
+        <span style="background-color: lightgreen; border: solid; padding: 5px">Nice <p>aaa</p> World</span>
+
+        <br>
+        <hr>
+        <br>
+
+        <!-- position 속성 -->
+        <div class="aaa">
+            <p id="p1">block #1</p>
+            <p id="p2">block #2</p>
+            <p id="p3">block #3</p>
+        </div>
+
+        <style>
+
+            div.aaa{
+                background: black;
+                position: relative; /*자식요소중 position이 absolute 인 요소의 부모기준이 되고자.. */
+            }
+            
+            #p1{
+                background-color: cyan;
+                width: 200px;
+                height: 50px;
+            }
+
+            #p2{
+                background-color: yellow;
+                width: 200px;
+                height: 50px;
+
+                position: static;/*default : 원래 배치되어야 할 위치에 배치되는 값 (위치설정 값 무시)*/
+                position: relative; /* 원래 배치되어야 할 위치에 배치되며 left, top 같은 위치설정값으로 조정이 가능함 */
+                position: absolute; /* 원래 배치되어야 할 위치에서 벗어나서 웹문서를 기준으로 좌표 위치설정으로 배치 [단, 부모요소의 position이 static이 아니면 부모요소의 좌상단을 기준으로 배치함] */
+                position: fixed; /* 웹브라우저의 화면을 기준으로 위치설정하여 배치 */
+
+                /* 위치 지정하는 속성 */
+                left: 50px;
+                top: 30px;
+            }
+
+            #p3{
+                background-color: lightgreen;
+                width: 200px;
+                height: 50px;
+            }
+
+        </style>
+
+    </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS ES6 let,const</title>
+    </head>
+
+    <body>
+        
+        <script>
+
+            // ECMAscript6(2015년 발표 버전 : ES6 or ES2015) - 현재는 ES8버전
+
+            //1. 변수 선언 키워드 추가 : let, const
+
+            //기존의 var 변수
+            var a=10;
+            document.write(a + "<br>");
+
+            //같은 이름의 변수를 또 만들면?
+
+            var a=20;
+            document.write(a + "<br>");
+            //에러아님. 단지. var키워드를 무시함.
+
+            //새로운 let 키워드로 변수를 선언
+            let b=100;
+            document.write(b + "<br>");
+
+            //같은 이름의 변수를 또 만들면?
+            //let b=200; //문법적 error - 이 스크립트가 시작 될 수도 없음
+
+            //즉 let은 의도치 않게 같은이름의 변수를 만드는 실수를 방지해줌
+            //let 도 변수를 만드는 키워드 이므로 변수의 값 변경 가능
+            b=200;
+            document.write(b + "<br>");
+
+            //const는 상수화된 변수 - 즉, 값변경이 불가한 변수
+            const c=1000;
+            document.write(c+"<br>");
+
+            //상수화된 변수이기에 값 변경이 불가능
+            //c=2000;//문법적 에러는 아니지만 실행하면 여기서부터 동작을 멈춤
+            //document.write(c+"<br>");
+
+            //당연히 const 도 let처럼 같은이름의 변수 선언은 불가능 - 문법적 에러
+            //const c=200;
+
+            //let 나 const도 역시 자료형은 자유롭게 변경하며 저장 가능함 [동적 타입언어].
+            let d="aaa";
+            document.write(typeof(d)+"<br>");
+            d=30;
+            document.write(typeof(d)+"<br>");
+            d=true;
+            document.write(typeof(d)+"<br>");
+            d=new Date()
+            document.write(typeof(d)+"<br>");
+
+            document.write("<hr>");
+
+            // var과 let, const 의 두번째 차이점
+            // 변수를 인식하는 범위 - 지역에 대한 해석 차이.
+            // var 변수는 지역을 함수 단위로 인식함.
+            // let, const는 지역을 {}단위로 인식함.
+
+            // {}블럭에 대한 지역성 여부를 확인
+            if(true){
+                var k=50;//var변수는 함수영역이 아니면 지역변수로 인식하지 않음.
+                document.write(k+"<br>");
+            }
+            document.write(k+"<br>");//var 변수 인식함.
+
+            if(true){
+                let m=80;//let 변수는 {}를 지역으로 인식하기에 m은 지역변수임
+                document.write(m+"<br>");
+            }
+            //document.write(m+"<br>");//m변수는 지역변수이므로 {}지역 밖에서는 인식불가- 에러:여기서부터 프로그램이 멈춤
+
+            //함수는 var, let, const 모두 지역으로 인식함
+            function aaa(){
+                var p=10;     //지역변수
+                let s="aa";   //지역변수
+                const k=true; //지역변수
+            }
+            //document.write(p+","+s+","+k); //3개모두 인식 불가능
+
+            // 반복문사용할때 
+            for(var i=0;i<3;i++){
+                document.write("aaa<br>");
+            }
+            document.write("i:"+i+"<br>");
+
+            for(let j=0;j<3;j++){
+                document.write("bbb<br>");
+            }
+            document.write("j:"+j+"<br>");// let변수 j는 지역변수이므로 인식 불가능
+
+        </script>
+
+    </body>
+</html>

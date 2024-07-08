@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Object</title>
+        
+        <script>
+
+            // JS 에서 객체의 2가지 종류
+            // 1. 내장객체 : document, window, navigator .../ new 안써도 되는 객체(이미 내장됨)
+            //               Date(), String(), Araay() / new 써야하는 객체
+
+            // 2. 사용자정의 객체 : 개발자가 필요에 의해 설계한 객체
+
+            //먼저. 사용자 정의 객체
+            //만드는 방법 2가지
+            //1. 리터럴 객체[객체를 생성하면서 설계하는 방법]
+            var person = {
+                //멤버변수 - 속성 property
+                name: "sam",
+                age: 20,
+
+                //멤버함수 - 메소드 method
+                show: function(){
+                    //document.write("show function");
+                    //멤버변수 출력해보기
+                    //document.write("show : " + name+" , " + age );//error - name, age 멤버변수인지 알지 못함
+                    //객체안에서 멤버를 지칭할때는 this 키워드 필요함.
+                    document.write("show : " + this.name+" , " + this.age +"<br>");
+                }
+            }
+
+            //객체 멤벼변수 (속성) 사용
+            document.write("name:" + person.name+" , ");
+            document.write("age:" + person.age+" <br> ");
+
+            //객체 멤버함수(메소드) 사용
+            person.show();
+
+            //똑같은 구조의 또 다른 객체가 필요할때 설계를 또 다시 해야만 함.
+            var person2 = {
+                name : "robin",
+                age:25,
+
+                show:function(){
+                    document.write("show: "+this.name+" , "+this.age+"<br>");
+                },
+
+                //파라미터 있는 메소드
+                add:function(a, b){
+                    var c=a+b
+                    document.write("add: "+c+"<br>");
+                }
+            }
+
+            person2.show();
+            person2.add(5,3);
+
+            person2.show(100); //<-파라미터가 없는 메소드에 값 전달하면? 에러아님. 아규먼트가 가지고있다함
+            // 단, 그 객체에게 없는 메소드를 사용하려고 하면 에러
+            //person.add();//error
+
+            //JS 객체의 특이점. 객체생성 후에도 멤버의 추가가 가능함
+            person.tel="010-1234-5678";
+            document.write(person.name + " : " + person.age + " - " + person.tel + "<br>");
+
+            person.out= function(){
+                document.write("out: " + this.name+","+this.age+"-"+this.tel+"<br>");
+            }
+
+            person.out();
+
+            //값을 대입한 적이 없는 새로운 멤버변수를 사용하면? - 멤버변수가 추가되면서 값은 undefined
+            document.write("address: " + person.address + "<br>");
+            
+            // 리터럴 객체를 써보니. 같은 구조의 객체를 여러개 만들때는 매우 불편한 방식
+            document.write("<hr>");
+
+            //2. 생성자함수를 이용한 객체 생성[new 키워드로 객체 생성]
+            // # 설계도면을 만들고 필요할때 마다 new 키워드로 객체생성하는 방법
+            function Student(){
+                // # this. 키워드가 있어야 멤버
+
+                // 멤버변수(속성)
+                this.name="aaa";
+                this.age=23;
+                this.major="android";
+
+                address="seoul";//이건 멤버변수 아니라 전역변수
+                var tel="010123456789"//이건 지역변수
+
+                // 멤버함수(메소드)
+                this.show=function(){
+                    document.write("sutudent show:" + this.name + ","+ this.age+","+this.major+"<br>");
+                }
+
+                this.setMembers=function(name,age,major){
+                    //매개변수로 전달된 값들을 멤버변수에 대입
+                    this.name=name;
+                    this.age=age;
+                    this.major=major;
+                }
+
+            }
+            //위 생성자 함수로 만든 Student를 객체로 생성하여 사용하기
+            var stu=new Student();
+            stu.show();
+
+            document.write("address"+stu.address+"<br>");//새로운 멤버변수 address가 추가되면서 값은 undefined
+            document.write("전역변수 address"+address+"<br>");
+
+            //생성자 함수로 설계를 해놓으면 필요할때 마다 new 만 쓰면 새로운 객체 생성
+            var stu2= new Student();
+            stu2.name= "bbb";
+            stu2.age= 25;
+            stu2.major="front-end";
+            stu2.show();
+
+            //사용해보니 멤버변수값을 입력하는 코드가 너무 번거로움.
+            var stu3= new Student();
+            //값을 입력해주는 기능이 있다면?
+            stu3.setMembers("ccc",21,"ios");
+            stu3.show();
+
+            // 여기까지 만들고 보니.. 객채생성 후에 멤버값을 대입하는 기능 메소드를 
+            // 매번 호출하는 것도 번거로움
+            // 그래서 객체가 생성될때 멤버값들을 전달시키는 생성자 함수
+            function Stu(name,age,major){
+                //생성자 함수 파라미터로 전달된 값들을 멤버변수 선언하면서 초기화
+                this.name=name;
+                this.age=age;
+                this.major=major;
+
+                //출력기능
+                this.show= function(){
+                    document.write("Stu: "+this.name+","+this.age+","+this.major+"<br>");
+                }
+            }
+
+            var s = new Stu("hong",27,"web");
+            s.show();
+
+            // ///p.337 자동차 객체 예제 실습
+
+            document.write("<hr>");
+            // 기타 추가적인 내용들////
+
+            // in 연산자 - 객체안에 특정 멤버변수가 있는지 여부 확인
+            document.write( 'name' in stu2 );
+            document.write("<br>");
+            document.write( 'phone' in stu2);
+            document.write("<br>");
+            document.write("<hr>");
+
+            // 객체안에 멤버가 또 다른 객체
+            var flight={
+                airlen:"Korean air",
+                number:777,
+                arrival:{
+                    nation:'japan',
+                    city:'tokyo'
+                }
+
+            }
+
+            document.write(flight.arrival.city+"<br>");
+
+            // clone() 기능
+            var p={
+                name:"aaa",
+                age:20,
+                show:function(){
+                    document.write(this.name+":"+this.age+"<br>");
+                }
+            }
+
+            // clone..
+            var p2=Object.create(p);
+
+            p.show();
+            p2.show();
+
+        </script>
+
+    </head>
+
+    <body>
+        
+
+    </body>
+</html>

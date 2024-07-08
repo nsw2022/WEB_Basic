@@ -1,0 +1,29 @@
+/* 클래스 선택자 이용하여 미리 CSS 작업 */
+
+.big{
+    font-size: 24px;
+}
+
+.under{
+    text-decoration: underline;
+}
+
+.rt{
+    color: red;
+}
+
+.bt{
+    color: blue;
+}
+
+.boldt{
+    font-weight: bold;
+    font-style: italic;
+}
+
+.btn{
+    border: 1px solid black;
+    padding: 10px;
+    margin: 8px;
+    background-color: gray;
+}

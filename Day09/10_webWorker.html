@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>web Worker</title>
+
+        <script>
+            function clickBtn(){
+                //별도의 Thread를 사용하지 않고 오래걸리는 직업 수행.[문제 발생]
+                var n=0;
+                while(true){
+                    n++;
+                    document.getElementById('hh').innerHTML= n;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <!-- 웹워커 : JS에서의 Thread(별도의 작업자) -->
+
+        <button onclick="clickBtn()">무한 반복기능</button>
+        <br>
+        <h2 id="hh">RESULT : </h2>
+        <hr>
+        <button>버튼</button>
+
+        <hr>
+        <!-- 웹 워커를 이용하여 main thread와 별도의 작업을 수행하도록. -->
+        <button onclick="aaa()">start worker</button>
+        <button onclick="bbb()">stop worker</button>
+
+        <script>
+            var w; //워커객체 참조변수
+            
+            function aaa(){
+                if(w==undefined){
+                    //Worker객체 생성 하면 자동 start [ 웹서버 호스팅환경에서만 동작함- Dothome or GitHub ]
+                    w= new Worker('./worker.js'); //워커가 할일을 별도의 js문서에 작성
+
+                    // 워커가 postMessage()기능으로 데이터를 보냈을때 자동으로 발동한 메소드 지정
+                    w.onmessage= function( message ){
+                        document.getElementById('hh').innerHTML= message.data;
+                    }
+                }
+            }
+
+            function bbb(){
+                w.terminate();
+                w= undefined;
+            }
+        </script>
+
+    </body>
+</html>

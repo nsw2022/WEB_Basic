@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DOM test</title>
+    </head>
+    <body>
+        
+        <!-- DOM(Document Object Model) tree -->
+        <!-- DOM트리의 가지에 있는 요소 하나하나를 node 라고 부름 -->
+        <!-- node 종류 : element node, attribute node, text node -->
+        <!-- 노드간의 관계 : parent node, child node, sibling node [이 관계를 이용하여 요소를 제어] -->
+
+        <!-- node의 종류 확인하기 -->
+        <p id="p1"><a href="" target="">aaa</a></p>
+
+        <script>
+
+            // id= p1인 p요소
+            var e= document.getElementById('p1');
+            //alert( e.nodeType +","+ e.nodeName);  //type:1 - element node
+
+            // p요소의 속성
+            var attrs= e.attributes;
+            //alert( attrs[0].nodeType +","+attrs[0].nodeName ); //type:2 - attribute node
+            //alert( '속성값 : ' +  attrs[0].value );
+
+            // p요소의 첫번째 자식노드 : a요소
+            var e= e.firstChild;
+            //alert( e.nodeType +","+ e.nodeName);
+
+            // a요소의 속성
+            var attrs= e.attributes;
+            //alert( attrs[0].nodeType+","+attrs[0].nodeName);
+            //alert( attrs[1].nodeType+","+attrs[1].nodeName);
+
+            // a요소의 첫번째 자식 노드 : 텍스트
+            var t= e.firstChild;
+            //alert( t.nodeType +","+t.nodeName); //type:3 - text node
+            //alert( '텍스트 값 : ' + t.data);
+        </script>
+
+        <hr>
+
+        <!-- 자식노드들 제어하기 -->
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+            <li>ddd</li>
+        </ul>
+
+        <ul>
+            <li>kkk</li>
+            <li>sss</li>
+        </ul>
+
+        <script>
+            //전체 li의 개수.
+            var items= document.getElementsByTagName('li');
+            //alert(items.length);
+
+            //첫번째 ul 요소의 자식들중에 li요소의 개수
+            var list= document.getElementsByTagName('ul');
+            var items= list[0].getElementsByTagName('li');
+            //alert(items.length);
+
+            //3번째 li의 텍스트노드 값
+            //alert(items[2].firstChild.data);
+
+            // <ul>요소의 첫번째 자식은 누구인가?
+            //alert(list[0].firstChild.nodeName);
+            //첫자식 노드가 LI 요소가 아니라 엔터글씨로 인한 #TEXT 노드가 됨
+            //줄바꿈을 안하면 LI가 첫자식 노드가 됨. 하지만 코드 사독성이 떨어짐.
+
+            // <ul>요소의 첫번째 자식 요소노드를 찾아오도록.
+            alert( list[0].firstElementChild.nodeName  );
+            alert( list[0].firstElementChild.firstChild.data);//요소노드의 텍스트 값
+
+            alert( list[0].lastElementChild.textContent);//firstChild.data를 줄여서 textContent
+
+        </script>
+
+
+    </body>
+</html>

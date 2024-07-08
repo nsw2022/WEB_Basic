@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>input element</title>
+    </head>
+    <body>
+        
+        <!-- 한줄만 입력됨. 너비를 넘어가면 자동 스크롤 -->
+        <input type="text" size="40"><br>
+        <input type="password"><br>
+
+        <!-- single choice button : radio button -->
+        <!-- name 속성의 값이 같아야 그룹으로 인식함 -->
+        라디오 버튼 : 
+        <input type="radio" name="rg"> aaa
+        <input type="radio" name="rg"> bbb
+
+        <br>
+
+        <!-- label 요소를 이용하여 글씨를 선택해도 체크될 수 있도록. -->
+        <input type="radio" name="gender" value="male" id="m">
+        <label for="m">남성</label>
+        <input type="radio" name="gender" value="female" id="f" checked="checked">
+        <label for="f">여성</label>
+
+        <br>
+
+        <!-- multiple choice button : checkbox -->
+        <!-- label 요소안에 checkbox를 배치하면 자동 연결됨 -->
+        <label><input type="checkbox" name="fruits[]" value="apple" checked> 사과</label>
+        <label><input type="checkbox" name="fruits[]" value="banana"> 바나나</label>
+        <label><input type="checkbox" name="fruits[]" value="orange" checked> 오렌지</label>
+        <!-- 서버에 전송되는 값은 value 속성으로 지정한 값들이 전달됨. (식별자: fruits) -->
+
+        <br>
+
+        <!-- submit, reset [ form 요소안에 있을때만 기능이 동작함 ] -->
+        <input type="submit" value="전송">
+        <input type="reset" value="취소">
+
+        <br>
+
+        <!-- 버튼을 만드는 요소들 -->
+        <input type="button" value="중복체크" onclick="alert('중복된 id 입니다.')">
+        <button onclick="alert('로그인')">로그인</button>
+        <br>
+
+        <!-- 이미지 버튼 -->
+        <input type="image" src="./image/anchor.png"><!-- form 요소안에서 submit의 역할 -->
+        <button><img src="./image/anchor.png" alt="anchor"></button>
+
+        <br>
+
+        <!-- 여러줄 입력 -->
+        <textarea name="msg" cols="40" rows="5"></textarea>
+        
+        <hr>
+        <!-- 콤보박스 : select -->
+        <select name="sel">
+            <option value="aa">AA</option>
+            <option value="bb">BB</option>
+            <option value="cc" selected="selected">CC</option>
+        </select>
+
+        <!-- 항목들 그룹나누기 -->
+        <select name="food">
+            <optgroup label="한식">
+                <option value="a">비빔밥</option>
+                <option value="b">떡갈비</option>
+                <option value="c">김밥</option>
+            </optgroup>
+            <optgroup label="중식">
+                <option value="aa">자장면</option>
+                <option value="bb">짬뽕</option>
+                <option value="cc">탕수육</option>
+            </optgroup>
+        </select>
+
+        <hr>
+
+        <!-- 영역을 그룹화 : fielset -->
+        <fieldset>
+            <legend>개인신장정보</legend>
+            <label>이름 : <input type="text" name="name"></label><br>
+            <label>주소 : <input type="text" name="address"></label>
+        </fieldset>
+
+
+        <!-- 새로 추가된 type들 -->
+        <input type="date"><br>
+        <input type="datetime"><br>
+        <input type="month"><br>
+        <input type="week"><br>
+        <input type="time"><br>
+
+        <input type="color"><br>
+
+        <!-- PC에서는 차이가 없지만 모바일에서는 소프트키보드의 모양이 달라짐 -->
+        <input type="email"><br>
+        <input type="tel"><br>
+
+        <!-- 글씨가 입력되면 우측에 X 버튼이 보여짐 -->
+        <input type="search"><br>
+
+        <input type="range" min="1" max="10" value="2" step="2"><br>
+
+        <input type="number" min="220" max="300" step="10" value="240"><br>
+
+        <input type="file" accept="image/jpeg" multiple="multiple"><br>
+
+        <br>
+        <hr>
+        <br>
+
+        <!-- input 요소에 새로 적용된 속성들 -->
+        <form>
+            <!-- 힌트 -->
+            <input type="text" placeholder="input name"><br>
+
+            <!-- 필수입력 요소설정 : submit 버튼을 눌렀을대 이 요소가 비어있으면 전송불가-->
+            <input type="text" required><br>
+
+            <!-- 글씨는 보이지만 수정불가 -->
+            <input type="text" value="sam" readonly><br>
+
+            <!-- 페이지 로딩시에 자동 포커스 받기 -->
+            <input type="text" autofocus><br>
+
+            <!-- 자동완성기능 : <datalist>요소와 함께 만들어야 동작함 -->
+            <input type="text" autocomplete list="datas">
+
+            <datalist id="datas">
+                <option value="canada"></option>
+                <option value="china"></option>
+                <option value="korea"></option>
+            </datalist>
+
+            <!-- form요소의 제출버튼(서버프로그램 실행 버튼) -->
+            <input type="submit">
+        </form>
+
+    </body>
+</html>

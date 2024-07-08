@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>박스모델</title>
+
+        <style>
+            /* 이 영역안에서는 CSS언어의 문법체계를 따름. */
+            #border{
+                border-style: solid;
+                border-top-style: dotted;
+
+                border-width: 3px;
+                border-bottom-width: 8px;
+
+                border-color: red;
+                border-right-color: blue;
+
+                border-radius: 20px;
+                border-bottom-left-radius: 0px;
+                border-top-right-radius: 0px;
+
+                /* 경계선의 두께가 이미지를 보여줄 정도 되야 함. */
+                border: 30px solid transparent; /*border 축약형 : width style color*/
+
+                border-image-source: url("./image/border.png");
+                border-image-slice: 30 30; /*높이, 너비*/
+                border-image-repeat: round;
+
+                /* 요소 크기 */
+                width: 70%;
+                height: 300px;
+
+                margin-left: 50px;
+
+                /* 블럭요소 중 사이즈가 조절된 요소의 가운데 정렬 */
+                /* 요소의 너비가 화면보다 작을때만 적용 */
+                margin-left: auto;
+                margin-right: auto;                
+            }
+
+            /* 인라인 요소는 블럭요소와 다른 특징이 있음. */
+
+            /* 인라인요소는 width,height 크기 조절이 불가함 */
+            a{background-color: red; width: 100%;}
+            em{background-color: aqua; width: 100%;}
+
+            /* 인라인-블럭 요소는 크기조절 가능함 */
+            img{width: 500px; border: 1px solid black;}
+            input{background-color: aqua; width: 100%;}
+
+            /* 마진에 대해서 더 알아보기. 서로의 마진이 겹쳐질 수 있음. */
+            #p1{background-color: red; height: 50px; margin: 0px; margin-bottom: 10px;}
+            #p2{background-color: green; height: 50px; margin: 0px; margin-top: 10px;}
+
+            /* 심지어 음수마진을 주면 요소가 겹쳐질 수 도 있음. */
+            #p1{background-color: red; height: 50px; margin: 0px;}
+            #p2{background-color: green; height: 50px; margin: 0px; margin-top: -20px; width: 50%;}
+
+            /* 배경이미지 */
+            .background{
+                background-color: greenyellow;
+                background-image: url(./image/image.png);
+                background-size: 150px 100px;
+
+                background-repeat: repeat;/* default */
+                background-repeat: repeat-x;
+                background-repeat: repeat-y;
+                background-repeat: no-repeat;
+
+                background-position: center;
+                background-position: right top;
+                background-position: top center;
+
+                padding: 30px;
+                margin: 20px 10px 20px 10px;/* top right bottom left - 시계방향 */
+
+                /* 배경설정을 축약형으로 */
+                background: green url(./image/image.png) no-repeat center;
+            }
+
+            /* background-attachment */
+            #attachment{
+                width: 60%;
+                height: 300px;
+                border: 2px solid blue;
+                overflow: scroll;
+                margin: auto;
+
+                background-image: url(./image/image.png);
+                background-size: 200px 100px;
+                background-repeat: no-repeat;
+                background-position: center;
+
+                background-attachment: scroll;/* default : 콘텐츠가 스크롤되어도 요소에 붙어 있는 포지션 유지 */
+                background-attachment: local; /* 요소의 콘텐츠와 같이 배경이미지가 스크롤 됩니다 */
+                background-attachment: fixed; /* 브라우저 스크롤 기준 : 단, 배경이므로 요소안에서만 보여짐 */
+            }
+
+        </style>
+
+    </head>
+    <body>
+
+        <!-- 경계선 border / 요소크기 / 중앙정렬 -->
+        <p id="border">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique commodi hic architecto natus, odio nulla dolorum repudiandae fugiat perspiciatis accusamus quasi quaerat nobis sed sapiente saepe earum vitae assumenda molestias.            
+        </p>
+
+        <!-- 인라인 요소 -->
+        <a href="">Google</a>
+        <em>Hello</em>
+
+        <!-- 인라인 요소 중에서 크기조절이 가능한 요소 [inline-block 요소] -->
+        <img src="./image/back.jpg" alt="back">
+        <input type="text">
+
+        <br>
+        <hr>
+        <br>
+
+        <!-- margin -->
+        <div id="margin">
+            <p id="p1">P1</p>
+            <p id="p2">p2</p>
+        </div>
+
+        <!-- 배경이미지 -->
+        <p class="background">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore voluptatem neque architecto, veritatis consequatur aliquam dignissimos at non nemo atque delectus voluptate, nulla possimus magni eligendi quasi! A, ea reiciendis.
+        </p>
+
+        <!-- 배경이미지-acttachment -->
+        <p id="attachment">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione magni, mollitia, eius dolore fugiat quaerat impedit quos culpa voluptate incidunt natus porro repudiandae placeat? Ducimus ipsam error eius accusamus delectus.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum, illum voluptates dolorum iusto tenetur ratione laudantium delectus nam nihil repellat explicabo modi voluptatibus dolores, perspiciatis cumque eveniet dolor. Obcaecati, porro?
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores et quae sunt totam, vitae magnam consectetur nam, dolore incidunt eius provident enim cupiditate quo aspernatur praesentium obcaecati tempore. Exercitationem, illo!
+        </p>
+        
+    </body>
+</html>

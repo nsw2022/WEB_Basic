@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>페이지 제작</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+		<div class="container">
+			<img src="image/11.png">
+			<ul class="sidemenu">
+				<li><a href="index.html">Home</a></li>
+			</ul>
+		</div>
+	</header>
+
+	<nav>
+		<div class="container">
+			<ul class="leftMenu">
+				<li class="active"><a href="index.html">Home</a></li>
+				<li class="dropBox">
+					<a href="">축구유니폼</a> 
+					<span class="dropmenu"> 
+						<span><a href="#">프리미어리그</a></span> 
+						<span><a href="#">라리가</a></span>
+						<span><a href="#">세리에A</a></span>
+						<span><a href="#">기타리그</a></span>
+						<span><a href="#">K리그</a></span> 
+					</span>
+				</li>
+				<li class="dropBox">
+					<a href="">축구화</a> 
+					<span class="dropmenu"> 
+						<span><a href="#">나이키</a></span> 
+						<span><a href="#">아디다스</a></span>
+						<span><a href="#">푸마</a></span>
+						<span><a href="#">아식스</a></span>
+						<span><a href="#">기타</a></span> 
+					</span>
+				</li>
+				<li><a href="galary.html">축구공</a>
+				<span class="dropmenu"> 
+						<span><a href="#">나이키</a></span> 
+						<span><a href="#">아디다스</a></span>
+						<span><a href="#">푸마</a></span>
+						<span><a href="#">아식스</a></span>
+						<span><a href="#">기타</a></span> 
+					</span>
+				</li>
+				<li class="dropBox">
+					<a>게시판</a> 
+					<span class="dropmenu"> 
+						<span><a href="g1.html">자유 게시판</a></span> 
+						<span><a href="g2.html">문의 게시판</a></span> 
+					</span>
+				</li>
+				<li><a href="#">상품구매</a></li>
+				<li><a href="#">장바구니</a></li>
+			</ul>
+			<ul class="rightMenu">
+				<li><a href="sign.html">회원가입</a></li>
+				<li><a href="login.html">로그인</a></li>
+			</ul>
+		</div>
+	</nav>
+	
+    <section id="section3">
+        <div class="container">
+            <h1>BEST PRODUCT</h1>
+            <div class="box">
+                <div class="image_box">
+                    <img src="image/ball1.png" alt="" onclick="showDivs(1)">
+                </div>
+                <div class="des">
+                    RIHLA 미니볼(H57793)
+                </div>
+            </div>
+            <div class="box">
+                <div class="image_box">
+                    <img src="image/ball2.png" alt="" onclick="showDivs(2)">
+                </div>
+                <div class="des">
+                    나이키 스트라이크 프로 팀(축구공)(SC3539-101)(SC3539101)
+                </div>
+            </div>
+            <div class="box">
+                <div class="image_box">
+                    <img src="image/ball3.png" alt="" onclick="showDivs(3)">
+                </div>
+                <div class="des">
+                   UEFA 챔피언스리그 컴페티션(축구공)
+                </div>
+            </div>
+            <div class="box">
+                <div class="image_box">
+                    <img src="image/ball4.png" alt="" onclick="showDivs(4)">
+                </div>
+                <div class="des">
+                    푸마 풋살 1 TB 피파 퀄리티(08376301)
+                </div>
+            </div>
+			<div class="box">
+                <div class="image_box">
+                    <img src="image/ball5.png" alt="" onclick="showDivs(5)">
+                </div>
+                <div class="des">
+                    메시 미니(H57877)
+                </div>
+            </div>
+			<div class="box">
+                <div class="image_box">
+                    <img src="image/ball6.png" alt="" onclick="showDivs(6)">
+                </div>
+                <div class="des">
+                    토트넘 미니볼(스킬볼) PVC(TT08)
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clear"></div>
+    
+    <div id="back"></div>
+    <div id="popup">
+        <div class="title">SandArt Popup <span class="close" onclick="closePopup()">&times;</span></div>
+         <div align="center" class="large">
+			<div class="small">
+				<img class="mySlides" src="image/ball1.png">
+				<img class="mySlides" src="image/ball2.png">
+				<img class="mySlides" src="image/ball3.png">
+				<img class="mySlides" src="image/ball4.png">
+				<img class="mySlides" src="image/ball5.png">
+				<img class="mySlides" src="image/ball6.png">
+				
+				<a class="leftbtn" onclick="plusDivs(-1)">◀</a>
+				<a class="rightbtn" onclick="plusDivs(1)">▶</a>
+			</div>
+		</div>
+    </div>
+    
+    <footer>    
+        <div class="top">
+            <div class="container">
+                <span>다운로드</span>
+                <span>개인정보처리방침</span>
+                <span>저작권지침및신고</span>
+                <span>이메일무단수집거부</span>
+            </div>
+        </div>
+        <div class="container">
+            <strong>
+                Home : Location Log : Tag Log : Media Log : Guestbook : Admin : New Post
+            </strong>
+            <div class="copyright">
+                COPYRIGHT Ⓒ 남가람북스's BLOG IS POWERED BY DAUM / DESIGNED BY TISTORY
+            </div>
+        </div>
+    </footer>
+    
+	<script>
+		var slideIndex=0;
+		function plusDivs(n) {
+		  showDivs(slideIndex += n);
+		}
+		function showDivs(n) {
+		  var i;
+		  slideIndex = n;
+		  var x = document.getElementsByClassName("mySlides");
+		  if (n > x.length) {slideIndex = 1}    
+		  if (n < 1) {slideIndex = x.length} ;
+		  for (i = 0; i < x.length; i++) {
+		     x[i].style.display = "none";  
+		  }
+		  x[slideIndex-1].style.display = "block";  
+		  document.getElementById("back").style.display = "block";
+		  document.getElementById("popup").style.display = "block"; 
+		} 
+		
+		function closePopup(){
+			document.getElementById("back").style.display = "none";
+		    document.getElementById("popup").style.display = "none";
+		}
+	</script>
+</body>
+</html>

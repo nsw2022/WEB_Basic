@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>media query</title>
+
+        <style>
+
+            #aa{
+                width: 320px;
+                height: 100px;
+                background-color: green;
+            }
+
+            /* 해상도에 따라 CSS를 다르게 꾸미는 기법 */
+            /* 미디어 쿼리 : 반응형웹을 위한 CSS의 선택적용 */
+
+            /* 방법1. @media 키워드 사용 */
+            @media(min-width: 560px){ /*너비가 560px 이상이면*/
+                #aa{
+                    width: 560px;
+                    height: 200px;
+                    background-color: yellow;                    
+                }
+
+            }
+
+        </style>
+
+        <!-- 방법2. media 속성 이용 -->
+        <link rel="stylesheet" href="./01_media.css" media="(min-width:680px) and (max-width:800px)">
+
+        <!-- 내부스타일에 media 속성 사용 -->
+        <style media="(min-width:800px)">
+            #aa{
+                width: 800px;
+                height: 200px;
+                background-color: aqua;
+            }
+
+        </style>
+
+
+    </head>    
+    <body>
+        
+        <div id="aa"></div>
+        
+    </body>
+</html>

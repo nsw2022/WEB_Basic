@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>RWD</title>
+
+        <style>
+            *{padding: 0px; margin: 0px;}
+
+            #wrap{
+                width: 90%;
+                border: 4px solid black;
+                margin: 0px auto;
+                font-size: 0px;
+            }
+
+            #wrap div{
+                display: inline-block;
+                height: 100px;
+                width: 100%;
+                /* margin-right: -6px; */
+                font-size: 16px;
+                
+            }
+
+            #wrap div:first-child{background-color: aqua;}
+            #wrap div:nth-child(2){background-color: lightgreen;}
+            #wrap div:nth-child(3){background-color: orange;}
+            #wrap div:nth-child(4){background-color: indigo;}
+            #wrap div:last-child{background-color: yellow;}
+
+            /* 반응형 웹 CSS - 미디어 쿼리 */
+            /* phone 세로 방향 */
+            @media all and (min-width:320px){
+                #wrap div{width:100%}
+            }
+
+            /* phone 가로 방향 or tablet */
+            @media all and (min-width: 600px){
+                #wrap div{width:50%}
+                #wrap div:last-child{width: 100%};
+            }
+
+            /* desktop or tablet-landscape (가로방향) */
+            @media all and (min-width: 800px) {
+                #wrap div{ width: 20%;}
+                #wrap div:last-child{ width: 20%;}
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div id="wrap">
+            <div>aa</div>
+            <div>bb</div>
+            <div>cc</div>
+            <div>dd</div>
+            <div>ee</div>
+            
+            
+        </div>
+    </body>
+</html>

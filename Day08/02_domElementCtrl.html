@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DOM element control</title>
+    </head>
+
+    <body>
+
+        <!-- 요소의 속성 변경 -->
+        <!-- img요소의 stc속성 변경 -->
+        <img src="./computer.png" alt="" width="120" height="120" id="aa">
+        <button onclick="change()">change image</button>
+
+        <script>
+            function change(){
+                document.getElementById('aa').src="./notebook.png";
+            }
+        </script>
+
+        <hr>
+
+        <!-- 요소의 스타일 변경 : DOM의 구조를 이용한 요소접근법 -->
+        <p>this is paragraph</p>
+        <button onclick="aaa(this)">스타일변경</button>
+
+        <script>
+            function aaa(e){
+                //클릭된 버튼의 앞 형제요소
+                var p = e.previousElementSibling;
+                p.style.color="red";
+                p.style.fontWeight="bold";
+                p.style.fontFamily="serif";
+            }
+        </script>
+
+        <hr>
+
+        <!-- 스타일변경시에 변경할 속성들이 여러개라면 모두 작성하는게 조금 번거로움 -->
+        <!-- class속성 변경을 통해 특정 스타일들을 한방에 적용 -->
+        <style>
+            .kk{
+                color: blue;
+                font-Family:"serif";
+                font-weight: bold;
+            }
+        </style>
+        
+        <button onclick="bbb(this)">클래스 속성 변경하여 스타일 적용하기</button>
+        <p class="">Hello world</p>
+
+        <script>
+            function bbb(e){
+                var p=e.nextElementSibling;
+                p.className="kk";//요소에 class 속성값 지정
+            }
+        </script>
+
+        <hr>
+
+        <!-- DOM노드의 동적생성과 추가 및 삭제 -->
+        <p id="pp"></p>
+        <button onclick="addText()">add Text node</button>
+        <button onclick="addElement()">add Element node</button>
+        <button onclick="removeNode()">remove Node</button>
+        
+
+        <script>
+
+            function removeNode(){
+                var pp= document.getElementById('pp');
+                var node=pp.firstChild;
+
+                pp.removeChild(node);
+            }
+
+
+            function addElement(){
+                // var node= document.createElement('a');
+
+                // //속성노드 추가
+                // var attr= document.createAttribute('href');
+                // attr.value= "https://www.google.com";
+                // node.setAttributeNode(attr);
+
+                // //텍스트노드 추가
+                // var text= document.createTextNode("Google");
+                // node.appendChild(text);
+
+                // //만들어진 a요소를 pp에 붙이기
+                // var pp= document.getElementById('pp');
+                // pp.appendChild(node);
+
+                // 위 방법이 정식 DOM 제어 방법
+                // 너무 번거로우면..
+                var pp=document.getElementById('pp');
+                //pp.innerHTML="<a href='https://naver.com'>NAVER</a>";
+                pp.innerHTML +="<a href='https://naver.com'>NAVER</a>";
+            }
+
+
+            function addText(){
+                var node= document.createTextNode("This is Text");
+                var node= document.createTextNode("<a href=''>This is Text</a>");//텍스트노드로 만들었기에 <a> 태그문을 요소로 해석하지 않음
+
+                var pp= document.getElementById('pp');
+                pp.appendChild(node);
+            }
+        </script>
+
+        <hr>
+
+        <!-- HTML5에서 새로 생긴 요소 선택 메소드 [ CSS의 선택자 문법을 사용할 수 있도록. ] -->
+        <h4 id="hh">aaa</h4>
+        <h4>bbb</h4>
+        <script>
+            var h = document.querySelector('#hh') //CSS의 선택자문법
+            h.style.color="red";
+
+            var hs = document.querySelectorAll('h4');//요소(타입)선택자는 여러개가 선택괼 수 있음.
+            hs[0].onclick=function(){
+                alert('aa');
+            }
+
+            hs[1].onclick=function(){
+                alert('bb');
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>페이지 제작</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+		<img src="image/11.png">
+            <ul class="sidemenu">
+               <li><a href="index.html">Home</a></li> 
+            </ul>
+        </div>
+    </header>
+
+	<nav>
+		<div class="container">
+			<ul class="leftMenu">
+				<li class="active"><a href="index.html">Home</a></li>
+				<li class="dropBox">
+					<a href="">축구유니폼</a> 
+					<span class="dropmenu"> 
+						<span><a href="#">프리미어리그</a></span> 
+						<span><a href="#">라리가</a></span>
+						<span><a href="#">세리에A</a></span>
+						<span><a href="#">기타리그</a></span>
+						<span><a href="#">K리그</a></span> 
+					</span>
+				</li>
+				<li class="dropBox">
+					<a href="">축구화</a> 
+					<span class="dropmenu"> 
+						<span><a href="#">나이키</a></span> 
+						<span><a href="#">아디다스</a></span>
+						<span><a href="#">푸마</a></span>
+						<span><a href="#">아식스</a></span>
+						<span><a href="#">기타</a></span> 
+					</span>
+				</li>
+				<li><a href="galary.html">축구공</a>
+				<span class="dropmenu"> 
+						<span><a href="#">나이키</a></span> 
+						<span><a href="#">아디다스</a></span>
+						<span><a href="#">푸마</a></span>
+						<span><a href="#">아식스</a></span>
+						<span><a href="#">기타</a></span> 
+					</span>
+				</li>
+				<li class="dropBox">
+					<a href="board.html">게시판</a> 
+					<span class="dropmenu"> 
+						<span><a href="g1.html">자유 게시판</a></span> 
+						<span><a href="g2.html">문의 게시판</a></span> 
+					</span>
+				</li>
+				<li><a href="#">상품구매</a></li>
+				<li><a href="#">장바구니</a></li>
+			</ul>
+			<ul class="rightMenu">
+				<li><a href="sign.html">회원가입</a></li>
+				<li><a href="login.html">로그인</a></li>
+			</ul>
+		</div>
+	</nav>
+
+    <section id="section2">
+        <div class="container">
+            <div class="loginBox">
+                <div>
+                    <div class="box">
+                        <div class="logo">
+                            <h1>로그인</h1>
+                        </div>
+                        <form action="/login" method="post">
+                            <input type="text" name="uid" placeholder="아이디">
+                            <input type="password" name="pw" placeholder="비밀번호">
+                            <button type="submit">로그인</button>
+                        </form>
+                    </div>
+                    <div class="box">
+                        <div class="social logo">
+                            <h1>소셜 로그인하기</h1>
+                            <button class="facebook">페이스북 ID로 로그인</button>
+                            <button class="twitter">트윗터 ID로 로그인</button>
+                            <button class="naver">네이버 ID로 로그인</button>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="alert">
+                        <h1>도움이 필요하신가요?</h1>
+                        <p>
+                            <button>회원가입</button>
+                            <button>아이디/비밀번호 찾기</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clear"></div>
+
+    <footer>    
+        <div class="top">
+            <div class="container">
+                <span>카타르월드컵</span>
+				<span>16강 가자!!!</span>
+                <span>개인정보처리방침</span>
+                <span>저작권지침및신고</span>
+            </div>
+        </div>
+        <div class="container">
+            <strong>
+                Home : 대표자: 홍길동   사업자등록번호: 452-86-00000
+					   통신판매업 신고번호: 2015-부산수영-0000호
+            </strong>
+            <div class="copyright">
+                주소: 부산광역시 수영구 수0로 000, 3층
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

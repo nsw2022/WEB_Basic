@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS ES6 class</title>
+    </head>
+    <body>
+        
+        <script>
+
+            // 객체를 생성하는 새로운 방법 : class키워드 등장[java언어와 사용법이 유사함]
+
+            // 기존 JS에서 객체를 생성하는 2가지 방법
+            //1) 리터럴객체 - 객체생성하면서 설계하는 기법
+            var p= {
+                name:"sam",
+                age:20,
+                show:function(){
+                    document.write(this.name+" : " +this.age+"<br>");
+                }
+            }
+            p.show(); //객체의 기능메소드 사용
+
+            //2) 생성자함수를 이용하여 객체 생성 
+            function Human(name, age){ // --설계도면 작성--                                
+                this.name= name;
+                this.age= age;
+                this.show= function(){
+                    document.write(this.name+" : " + this.age +"<br>");
+                }                
+            }
+            //생성자함수(설계도)를 이용하여 객체 생성
+            var h= new Human("robin", 25);
+            h.show(); //객체의 기능메소드 사용
+
+
+            // # 새로운 객체 생성 방법 (Native 언어들에서 했던 방법)#
+            //1. 클래스의 선언 [객체를 만드는 것이 아님 - 설계도면을 작성한 것임]
+            class Person{
+                //기존에 하던 멤버변수 작성형태는 불가
+                //let name; //ERROR
+                //this.name;//ERROR
+
+                // 멤버변수는 특별한 키워드 없이 그냥 변수명만 작성
+                name;
+                age=0;
+
+                // 생성자함수 - 객체생성할때 자동으로 실행되는 메소드
+                constructor(){
+                    this.name= "aaa";
+                    this.age= 10;
+
+                    //멤버변수를 반드는 또 다른 방법 - 생성자안에서 변수선언 및 초기화
+                    this.address= "seoul";
+
+                    //당연히  this키워드 없이 변수를 생성자안에 만들면 멤버변수가 아님
+                    let tel="1234"; //지역변수
+                }
+
+                //멤버함수도 function 키워드 없이 그냥 함수명만 작성하여 설계
+                //function show(){} - ERROR
+                show(){
+                    document.write("name: "+ this.name+", " +"age: " + this.age+"<br>");
+                }
+            }
+
+            //class로 설계한 Person를 객체로 생성하여 사용해보기
+            let person= new Person();
+            person.show(); // 객체의 기능메소드 호출    
+            
+            //객체의 멤버변수를 직접 접근하는 것도 당연히 가능
+            document.write("이름: " + person.name +"<br>");
+            document.write("나이: " + person.age +"<br>");
+            document.write("주소: " + person.address +"<br>");
+            //생성자안에 만든 let 지역변수는 멤버로 사용불가능
+            //person.tel= "111" //에러안남? - 새로운 멤버변수를 추가한 것임.
+            //JS는 다른 언어들과 다르게 설계도(class)에 없는 멤버를 객체생성후
+            //추가하는 것이 가능함.
+        </script>
+
+        <hr>
+
+        <script>
+
+            // 같은 .html문서 안에서는 위 script에서 설계한 class 를 사용할 수 있음.
+            let person2= new Person();
+            person2.show();
+
+            // 객체를 생성하면서 값 전달하기 - 생성자함수에 파라미터 전달
+            class Member{
+                // constructor(id, pw){
+                //     this.id= id;
+                //     this.pw= pw;                                        
+                // }
+
+                //생성자 오버로딩 시도! - ERROR : 치명적 에러여서 이 코드가 있는 script 전체가 실행불가
+                // constructor(){
+                //     this.id="sample";
+                //     this.pw="sample";
+                // }
+
+                //생성자 오버로딩처럼 값 전달될때와 전달되지 않을때.. 모두 대응하려면?
+                //파라미터(매개변수)의 default value 기능을 사용
+                constructor(id="sample", pw="1111"){ //파라미터 기본값 설정
+                    this.id= id;
+                    this.pw= pw;
+                }
+
+                show(){
+                    document.write("ID: " + this.id+" , " + "PW: " + this.pw +"<br>");
+                }
+
+                out(){
+                    document.write("out : no parameter");
+                }
+
+                //이건 오버로딩이 아님. 이건 오버라이트(덮어쓰기 임)
+                out(a){
+                    document.write("out : " + a +"<br>");
+                }
+
+                //리턴값이 있는 멤버메소드 - 특별할 것이 없음.
+                add(a,b){
+                    return a+b;
+                }
+            }
+
+            let member= new Member("mrhi","1234");
+            member.show();
+
+            //혹시 생성자 파라미터에 값을 전달하지 않으면? - undefined
+            let member2= new Member();
+            member2.show();
+
+            // 생성자에 값 전달 or 값 전달 안하는 2가지 경우에 대응하도록.
+            // 생성자함수를 오버로딩(Overloading) 할 수 있나? 생성자 오버로딩은 문법적으로 없음.
+            // 생성자 오버로딩의 효과를 보이려면.. 파라미터의 default value 사용
+
+            // 일반 멤버메소드도 오버로딩이 불가능한가? - 에러는 아니지만 오버로딩은 없음.
+            // 대신 마지막 작성 함수로 덮어쓰기 됨.
+            member.out();
+            member.out(100);
+
+            // 리턴값이 있는 메소드 사용 - 특별한 것 없음.
+            let sum= member.add(50, 30);
+            document.write("sum : " + sum +"<br>");
+
+            // 멤버메소드로 설계도면에 없더라도 객체 생성후 추가할 수 있음.
+            member.display= function(){
+                document.write("display : " + this.id);
+            }
+            member.display();
+
+        </script>
+
+        <hr>
+
+        <script>
+
+            // 클래스의 상속
+
+            // 상속해줄 부모클래스 설계 [이름,나이]
+            class He{
+                constructor(name, age){
+                    this.name= name;
+                    this.age= age;
+                }
+                show(){
+                    document.write("name: " + this.name+" , "+"age: " +this.age);
+                }
+            }
+
+            let he= new He("sam", 20);
+            he.show();
+            document.write("<br>");
+
+            // [이름,나이,전공]을 멤버로 가질 학생 클래스를 설계
+            // [이름,나이]를 가진 설계도면.. He 클래스를 상속받아 이어 설계하기.
+            class Student extends He{
+                // 아무 코드를 작성하지 않아도 이미 He의 모든 멤버를 보유한 상태
+                constructor(name, age, major){
+                    //this.name= name; 
+                    //this.age= age;
+                    //상속받은 멤버 name, age를 하나씩 대입해주기 짜증.
+                    //부모클래스의 생성자에 name,age를 전달하면 알아서 멤버값에 대입해줌.
+                    super(name, age);
+                    this.major= major;
+                }
+                //상속받은 show 기능이 이름,나이만 출력하기에..상속받은 기능메소드를 수정
+                //오바라이딩(Overriding)
+                show(){
+                    //부모의 멤버값 출력은 부모의 기능을 이용
+                    super.show();
+                    document.write(", major: " + this.major);
+                }
+            }
+
+            let s= new Student("kim",23,"android");
+            s.show();
+            document.write("<br>");
+
+        </script>
+
+        <hr>
+
+        <script>
+
+            // 정적멤버 static 키워드 추가 - 객체생성없이 사용할 수 있는 멤버
+            class First{
+                //정적멤버변수 - 속성
+                static name="hong";
+
+                //정적인멤버함수 - 메소드
+                static show(){
+                    document.write("static method.<br>");
+                }
+            }
+
+            // static 멤버는 객체생성없이 클래스명. 으로 접근
+            document.write("정적 멤버변수 name :" + First.name+"<br>");
+            First.show();//정적메소드호출
+
+            //주의!. 객체를 생성하여 참조변수로 static 멤버접근은 불가
+            let f=new First();
+            document.write("name: "+f.name+"<br>");//undefined. JS 는 객체생성후 새로운 멤버추가가 가능하기에 name을 새로운 멤버변수로 인식함.
+
+        </script>
+
+        <hr>
+
+        <script>
+
+            //JS만의 특별한 문법 : 구조분해할당 - 객체의 멤버중 일부를 뽕아오는 기능
+            class Nice{
+                name="sam";
+                age=20;
+                address="seoul";
+            }
+
+            let nice = new Nice();
+            document.write(nice.name+"<br>");
+            document.write(nice.age+"<br>");
+            document.write(nice.address+"<br>");
+
+            //멤버 사용할때마다 nice 객체참조변수명을 명시하는것이.. 은근 짜증
+            //특정 멤버값을 일반변수에 대입하여 사용하면 조금더 간결해짐.
+
+            //let name=nice.name;
+            //let age=nice.age;
+            //위처럼 멤버값을 별도로 뺑는 코드를 한줄로 작성하는 문법
+            //구조 분해 할당
+            let {name,age}=nice;
+            document.write(name + " : "  + age+"<br>");//사용할때 조금더 간결해짐
+
+            // 이 구조분해할당 문법은 별도의 함수에 객체를 전달하여 그 멤버중 일부를
+            // 사용할대 매우 유용함.
+
+            //구조분해할당안했을때
+            function showNiceAddress(obj){
+                document.write("주소" +  obj.address+"<br>");
+            }
+
+            showNiceAddress(nice);//객체를 전달
+
+            //구조분해할당을 했을때
+            function showNiceAddress2({address}){//구조분해할당으로 객체의 멤버 받기
+                document.write("주소" + address+"<br>");
+            }
+            showNiceAddress2(nice);//객체 전달
+
+
+        </script>
+
+    </body>
+
+</html>

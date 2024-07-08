@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>위치기반 서비스</title>
+
+        <script>
+            function aaa(){
+                navigator.geolocation.getCurrentPosition( function( position ){
+
+                    var lat= position.coords.latitude;
+                    var lng= position.coords.longitude;
+
+                    document.getElementById('hh').innerHTML= lat+" , " +lng;
+                }, function( error ){
+                    switch( error.code ){
+                        case error.PERMISSION_DENIED: str="사용자거부"; break;
+                        case error.POSITION_UNAVAILABLE: str="지리정보 없음"; break;
+                        case error.TIMEOUT: str="시간초과"; break;                        
+                    }
+
+                    document.getElementById('hh').innerHTML= str;
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="aaa()">현재 내위치 얻어오기</button>
+        <h3 id="hh">위도, 경도</h3>
+
+        <button onclick="bbb()">위치정보 자동 업데이트</button>
+        <button onclick="ccc()">위치정보 자동 업데이트 종료</button>
+
+        <script>
+            function bbb(){
+                id= navigator.geolocation.watchPosition( function( position ){
+                    var lat= position.coords.latitude;
+                    var lng= position.coords.longitude;
+
+                    document.getElementById('hh').innerHTML= lat+" , " +lng;
+                });
+            }
+
+            function ccc(){
+                navigator.geolocation.clearWatch(id);
+            }
+        </script>
+
+
+
+    </body>
+</html>

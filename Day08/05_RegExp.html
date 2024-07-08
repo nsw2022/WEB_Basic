@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Regular Expression</title>
+    </head>
+
+    <body>
+        
+        <h3>정규표현식을 이용한 유효성 검사</h3>
+
+        <input type="text" id="in">
+        <button onclick="check()">check</button>
+        <h5 id="result">결과</h5>
+
+        <script>
+
+            function check(){
+
+                //검증용 정규표현식
+                var regExp=/^[a-z]+$/;//영어소문자로 시작 및 끝나야하며 1글자 이상
+
+                var value=document.getElementById('in').value;                
+                var result=document.getElementById('result');
+
+                // 정규표현식을 검증 2가지 방법
+                // 1. String 객체의 .match() 메소드
+                if( value.match(regExp) ) result.innerHTML="OK";
+                else result.innerHTML="요구하는 형식이 아닙니다.";         
+                
+                // 2. RegExp 객체의 .test() 메소드
+                if(regExp.test(value) ) result.innerHTML="OK";
+                else result.innerHTML="요구하는 형식이 아닙니다.";
+
+                /////////////////////////////////////////////////////////////////////////
+
+
+                // 정규표현식 연습 
+                regExp= /a/;    // a라는 글자가 포함된 모든 문자열...
+                regExp= /A/;    // A가 포함된 모든..
+                regExp= /ab/;   // ab가 포함된 모든..
+                regExp= /^a/;   // 시작이 무조건 a
+                regExp= /^[a-z]/;   // 시작이 무조건 영어 소문자
+                regExp= /a$/;   // 종료가 무조건 a
+                regExp= /ab$/;   // 종료가 무조건 ab
+                regExp= /^a$/;   // a 1개
+                regExp= /^ab$/;   // ab 1개
+                regExp= /^[a-z]$/; //영어 소문자가 한개
+                regExp= /^[a-zA-z]$/; //영어문자가 한개
+                regExp= /^[a-zA-z0-9]$/; //영어,숫자
+                regExp= /^[a-z]{2}$/; //영어 소문자2개
+                regExp= /^[a-z]{2,4}$/; //영어 소문자 2~4개
+                regExp= /^[a-z]{4,}$/;  //영어소문자 4개이상
+                regExp= /^\w{2}$/;     // 문자 or 숫자 2개
+                regExp= /^[a-z]{2}$/;     // 영어 소문자 2개
+                regExp= /^[a-z]*$/;     // 영어 소문자 0개 이상 [값이 없어도 OK]
+                regExp= /^[a-z]+$/;     // 영어 소문자 1개 이상
+                regExp= /^[a-z]?$/;     // 영어 소문자 0개 or 1개 [값이 없어도 ok]
+                regExp= /^[0-9]$/;      //숫자 1개
+                regExp= /^[5-9]$/;      // 5~9 숫자 1개
+                regExp= /^\d$/;      // 숫자 1개
+                regExp= /^\d\d\d$/;      // 숫자 3개
+                regExp= /^\d{3,4}$/;      // 숫자 3~4개
+                regExp= /^\d\da\d\da\d\d$/;     // 숫자2개 a 숫자2개 a 숫자2개
+
+                regExp= /^\d\d\d\d-\d\d-\d\d$/;     // 생년월일 ####-##-## 형식
+                regExp= /^[a-zA-Z0-9!&*~-]+@[a-zA-Z0-9]+.[a-zA-Z]+$/;              //  ####@##.## 이메일형식
+                regExp= /^http:/;     //  시작이 http: - url검사
+
+                regExp= /^\/$/;     //  '/'(슬래시) 1개
+
+                if(regExp.test(value) ) result.innerHTML="OK";
+                else result.innerHTML="요구하는 형식이 아닙니다.";
+            }
+
+            /**이름, 나이 입력하면 합쳐서 문자로 뱉어주는 함수 */
+            function hello(name, age){
+                return name + age
+            }
+
+            
+
+        </script>
+
+        <!-- chapter 10. 연습문제 p.416 -->
+
+    </body>
+</html>

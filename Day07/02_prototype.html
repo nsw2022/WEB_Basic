@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS prototype</title>
+
+        <script>
+
+            // 리터럴객체든 생성자함수를 이용한 객체든 모두 멤버 메소드를 객체마다 보유함.
+            // 같은 객체자료형 마다 메소드가 하나만 존재하도록 하는 기법. : prototype
+
+            function Person(name, age){
+                this.name=name;
+                this.age=age;
+            }
+
+            //Person자료형에 하나만 존재하는 메소드 추가
+            Person.prototype.show=function(){
+                document.write("Person:"+this.name+" - "+this.age+"<br>");
+            }
+
+            var p1=new Person("sam",20);
+            var p2=new Person("robin",25);
+
+            p1.show();
+            p2.show();
+
+            //당연히 여러개 추가도 가능함
+            Person.prototype.getName=function(){
+                return this.name
+            }
+
+            document.write("이름 : "+ p1.getName()+"<br>");
+
+            // prototype 안에 변수를 넣을 수도 있지만 굳이. 수업은 하지 않음.
+
+            // prototype을 일종의 객체 상속처럼 사용도 가능하지만 현재는 거의 사용안함.
+
+            //////////////////////////////////////////////////////////////////////
+            
+            document.write("<hr>");
+
+            // 생성자 함수 안에서 지역변수를 객체 멤버변수 초기화에 활용 할수도 있음
+            function Car(model, color){
+
+                //지역변수
+                var abc="blue";
+
+                this.model=model;
+                this.color=color + abc;//지역변수를 멤버변수 초기화에 활용
+            }
+
+            var c = new Car("aa","red");
+            document.write(c.model + " : " + c.color);
+
+            // JS 객체도 최상위 Object 클래스의 능력을 기본 상속받은 상태임.
+            document.write("<hr>");
+
+            var p3=new Person();
+            document.write(p3.toString()+"<br>");//Person 에 없는 기능 toString()이 존재함
+
+            // .toString() 처럼 모든 객체가 기본으로 장착한 기능들을 가진 Object 클래스가 존재함.
+
+            // Object클래스가 기본으로 가지고 있는 기능메소드는 교재참고 자주안씀..
+
+        </script>
+
+    </head>
+
+    <body>
+        
+    </body>
+</html>

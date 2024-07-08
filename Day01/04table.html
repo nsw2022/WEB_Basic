@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>table 연습</title>
+    </head>
+
+    <body>
+        
+
+        <table border="1">
+            <!-- 테이블 헤더 -->
+            <tr>
+                <th>no</th>
+                <th>name</th>
+                <th>message</th>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>sam</td>
+                <td>Hello</td>
+            </tr>
+
+            <!-- 각 줄의 칸 개수가 다를 수도 있음 -->
+            <tr>
+                <td>2</td>
+                <td>Robin</td>
+                <td>Nice to meet you.</td>
+                <td>2022-11-22</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        
+
+        <!-- 셀병합기능 -->
+        <table border="1">
+
+
+            <!-- 셀병합은 비교할수 있는 다음 줄(row) 이 존재해야만 적용 됨 -->
+            <tr>
+                <td rowspan="2">111</td>
+                <td colspan="3">222</td>
+                <td>333</td>
+            </tr>
+            <tr>
+                <td>444</td>
+                <td>555</td>
+                <td>666</td>
+                <td>777</td>
+            </tr>
+
+            
+            <!-- 표제목 : 작성 위치와 상관없이 무조건 표의 상단배치 위치변경은 CSS에서 -->
+            <caption>테이블제목</caption>
+        </table>
+
+        <hr>
+
+        <!-- 테이블의 셀안에 다른요소(element)를 넣기 -->
+        <table border="1" width="100%">
+            <tr>
+                <td width="30%">
+                    <a href="https://www.naver.com" target="_blank">네이버</a>
+                </td>
+
+                <td>
+                    <ul>
+                        <li>aaa</li>
+                        <li>bbb</li>
+                        <li>ccc</li>
+                    </ul>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td><p>테이블 안에는 어떤 요소든 넣을 수 있음. 한글은 자동 줄바꿈 됨.</p></td>
+                <!-- 영어는 띄어쓰기 단위로 줄바꿈 됨. -->
+                <td><p>adfasdfasdfasdfasdfasdfasdfjhasldkglsak djfhlksjdaghlaskjdfhlsakdjlfdkjhasdlkjahsdflkhjdlfkajsfdh</p></td>
+            </tr>
+            <td>
+                <img src="./seolak.jpg" alt="설악등반" width="70%">
+            </td>
+
+        </table>
+
+    </body>
+</html>

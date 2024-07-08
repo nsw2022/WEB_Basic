@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BOM test</title>
+    </head>
+    <body>
+        
+        <!-- BOM(Brower Object Model) : 기본 JS에 내장되어 있는 객체들 -->
+        <!-- 1. window : 최상위 객체 -->
+
+        <!-- 주요메소드들 -->
+        <!-- 1) open, close : 새로운 웹문서를 열기/닫기 -->
+        <button onclick="aaa()">naver</button>
+        <script>
+            function aaa(){
+                //window.open('https://www.naver.com'); //기본 _blank
+                //window.open('https://www.naver.com', "_self"); //target
+
+                //새탭이 아니라 새윈도우로 열고 싶다면. 옵션으로 사이즈 지정
+                //window.open('https://www.naver.com','_blank','width=300, height=150');
+                var specs="width=500, height=200, left=200, top=150";
+                window.open('https://www.naver.com', '_blank', specs);
+            }
+        </script>
+
+        <!-- 빈 윈도우 띄우기 -->
+        <button onclick="bbb()">message box</button>
+        <script>
+            function bbb(){
+                var win= window.open('','','width=500,height=200,left=200,top=150');
+                win.document.write("<h3>Hello world</h3>");
+                win.document.write("<p>This is message box</p>");
+            }
+        </script>
+
+        <!-- 윈도우 닫기 -->
+        <button onclick="ccc()">close window</button>
+        <script>
+            function ccc(){
+                window.close();
+            }
+        </script>
+
+        <!-- 새윈도우 열고 닫기 -->
+        <button onclick="ddd()">open</button>
+        <button onclick="eee()">close</button>
+        <script>
+            var win;
+            function ddd(){
+                win= window.open('','','width=500,height=200');
+                win.document.write("aaaaa");
+            }
+            function eee(){
+                win.close();
+            }
+        </script>
+
+        <hr>
+
+        <!-- 2) moveTo, moveBy : 윈도우창 이동 -->
+        <button onclick="ooo()">open window</button>
+        <button onclick="mmm()">move window</button>
+        <script>
+            function ooo(){
+                w=open('','','width=500, height=200'); //winodw.객체는 최상위여서 생략이 가능함
+                w.document.write("오늘의 특가 제품입니다.");
+                w.moveTo(300,100);
+            }
+
+            function mmm(){
+                w.moveBy(10,10); //현재위치를 기준으로 변화량을 지정
+                w.focus();
+            }
+        </script>
+
+        <hr>
+
+        <!-- 3) setTimout, setInterval, clearInterval -->
+        <button onclick="showAlert()">3초 후에 경고창</button>
+        <script>
+            function showAlert(){
+                setTimeout( function(){alert('3초경과')},3000);
+            }
+        </script>
+
+        <br>
+        <input type="text" id="in1" value="0">
+        <button onclick="startCount()">1초 마다 카운트 증가</button>
+        <button onclick="stopCount()">카운트 종료</button>
+        <script>
+
+            var show=function(){
+                var e=document.getElementById('in1');
+                //e.value=e.value + 1; //문자형이기에 결합연산이 되어 버림
+                e.value=parseInt(e.value)+1;
+            }
+
+            function startCount(){
+                id=window.setInterval(show,1000);//인터벌 식별번호 리턴
+                
+            }
+
+            function stopCount(){
+                window.clearInterval(id); // 인터벌 식별번호를 제거
+            }
+
+        </script>
+
+        <hr>
+
+        <!-- 4)기타 유용한 메소드-->
+        <script>
+            // 인터넷의 주소창에는 한글이나 특수문자를 인식하지 못하기에 인코딩(암호화)
+
+            // 인코딩 기능 함수
+            var url="http://www.test.com/영화/액션/Notting hill.mp4";
+            var aa=window.encodeURI(url);
+            document.write(aa);
+            document.write("<br>");
+
+            // 인코딩 된 문자열을 해독 : 디코딩
+            var bb=window.decodeURI(aa);
+            document.write(bb);
+            document.write("<br>");
+
+            //eval() - 문자열을 JS의 코드로 해석하는 기능
+            var x="10+2*6";
+            document.write(x+"<br>");
+            var z= eval(x); //문자열 안에있는 +와*를 js의 연산자로 생각함
+            document.write(z+"<br>");
+
+            //데이터가 숫자로 변화할수 있는지를 판단 - !!parseInt()가 가능한지!!
+            document.write(  isNaN(10) + "<br>" ); //false
+            document.write(  isNaN("hello") + "<br>" ); //true
+            document.write(  isNaN('10') + "<br>" ); //false
+
+        </script>
+
+        <br>
+        <hr>
+        <hr>
+        <br>
+
+
+        <!-- 2. document -->
+        <!-- 웹문서 하얀영역을 담당하는 객체 이미 여러번 사용했음 별도 실습x-->
+        <!-- 원래 정식 표기법은 window.document 임. 다만, window를 생략하여 사용함 -->
+
+        <!-- 3. screen -->
+        <script>
+
+            // 모니터의 해상도 정보
+            document.write("모니터 해상도 : " + screen.width +" , " + screen.height +"<br>");
+            document.write("작업표시줄 제외한 해상도 : " + screen.availWidth +" , " + screen.availHeight +"<br>");
+
+            // 브라우저의 사이즈는?
+            document.write("브라우저 창의 전체사이즈 : " + window.outerWidth +" , " +window.outerHeight +"<br>");
+            document.write("브라우저 창의 document 영역 사이즈 : " + window.innerWidth +" , " +window.innerHeight +"<br>");
+
+        </script>
+
+        <br>
+        <hr>
+        <hr>
+        <br>
+
+
+        <!-- 4. location :현재 웹 문서의 URL 정보 -->
+        <script>
+            // 주요속성들
+            document.write(location.href+"<br>");
+            document.write(location.protocol+"<br>");
+            document.write(location.pathname+"<br>");
+        </script>
+
+        <button onclick="fff()">새로운 문서 열기</button>
+        <button onclick="ggg()">현재문서 문서 열기</button>
+        <button onclick="hhh()">새로운 문서로 대체하여</button>
+
+        <script>
+            function fff(){
+                location.assign("https://naver.com");
+            }
+
+            function ggg(){
+                location.reload();//새로고침 버튼
+            }
+
+            function hhh(){
+                location.replace("https://www.naver.com");//뒤로가기 없음.
+            }
+
+        </script>
+
+        <br>
+        <hr>
+        <hr>
+        <br>
+
+       <!-- 5. history : 방문한 URL 정보 -->
+       <script>
+        document.write("방문한 페이지 수 : " + history.length +"<br>");
+
+            function back(){  history.back(); }
+            function forword(){ history.forward(); }
+            function go(){ history.go(-2); }
+        </script>
+
+        <button onclick="back()">뒤로</button>
+        <button onclick="forword()">앞으로</button>
+        <button onclick="go()">2페이지 이전</button>
+
+        <br>
+        <hr>
+        <hr>
+        <br>
+
+        <!-- 6. navigator : 브라우저의 정보 - 추후 새로등장하는 기술들은 대부분 이 객체의 하위에 위치함 -->
+        <script>
+            //사용하는 브라우저의 정보
+            document.write(navigator.appName+"<br>");
+            document.write(navigator.appVersion+"<br>");
+            document.write(navigator.platform+"<br>");
+            document.write(navigator.userAgent+"<br>");
+        </script>
+
+    </body>
+</html>

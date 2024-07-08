@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <fieldset>
+            <legend>카드정보입력</legend>
+            <ol>
+                <li>
+                    <fieldset>
+                        <legend>카드 타입</legend>
+                            <ol>
+                                <li>
+                                    <input type="radio" name="cardType" value="VISA" id="V">
+                                    <label for="VISA">VISA</label>
+                                </li>
+
+                                <li>
+                                    <input type="radio" name="cardType" value="AmEx" id="A">
+                                    <label for="AmEx">AmEx</label>
+                                </li>
+
+                                <li>
+                                    <input type="radio" name="cardType" value="Mastercard" id="M">
+                                    <label for="Mastercard">Mastercard</label>
+                                </li>
+
+                            </ol>
+                    </fieldset>
+                </li>
+
+                <li>
+                    카드번호 <input type="number">
+                </li>
+
+                <li>
+                    CRC 번호 <input type="number">
+                </li>
+
+                <li>
+                    카드 소유자 이름 <input type="text" placeholder="카드 상의 이름">
+                </li>
+
+            </ol>
+
+        </fieldset>
+        <fieldset>
+            <input type="submit" value="구매">
+        </fieldset>
+
+    </body>
+</html>

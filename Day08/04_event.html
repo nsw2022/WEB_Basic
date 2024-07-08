@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS EVENT Handling</title>
+
+        <script>
+            // JS에서 이벤트를 처리하는 방법 3가지
+            //1. html에서 요소의 속성으로 콜백되는 함수 지정 <button onclick="aaa()">
+            //2. JS에서 요소를 찾아와서 이벤트 콜백 속성에 함수 지정
+            //3. 요소에 특정 이벤트 리스너를 추가하느 메소드를 통해 처리
+
+            // onload 이벤트 - 문서의 로드가 모두 완료되면 발생하는 이벤트
+            
+            // body영역 안에 있는 요소 제어
+            document.getElementById('aa').innerHTML="Hello";//이건처리안됨. why? 아직요소가 없어서 - head가 body보다 먼저실행됨
+            
+            //body의 요소 load가 완료될때 발동하는 이벤트 [ load ] 를 처리하기
+            //이벤트 처리의 1번째 방법 - html의 body요소 속성으로 이벤트 등록
+            function loaded(){
+                document.getElementById('aa').innerHTML="Hello";
+
+                //이벤트 처리에 2번째 방법 - 요소를 찾아와서 이벤트 콜백함수 지정
+                document.getElementById('aa').onclick=function(){
+                    document.getElementById('aa').innerHTML += "Android";
+                };
+
+                //이벤트 처리의 3번째 방법(권장) - 요소에 이벤트리스터를 설정하는 메소드를 이용
+                document.getElementById('aa').addEventListener('dblclick',  function(){
+                    alert("double clicked");
+                } );
+
+            }
+            
+        </script>
+
+    </head>
+
+    <body onload="loaded()">
+
+        <!-- 1. 이벤트 처리 적용 연습용 -->
+        <h2 id="aa"></h2>
+
+        <!-- 2. 다른 종류의 자주 사용되는 이벤트들 -->
+
+        <!-- input요소의 입력필드값 변경 이벤트 -->
+        <input type="text" id="in1" onfocus="aaa()">
+        <input type="text" id="in2" onblur="bbb()" onchange="ccc()">
+        <script>
+            function aaa(){
+                document.getElementById('in1').value="Hello"
+            }
+            function bbb(){
+                alert('blur');
+            }
+            function ccc(){
+                alert('change');
+            }
+        </script>
+
+        <hr>
+
+        <!--사용자가 값을 입력하고 필드를 벗어나면 자동으로 대문자로 변경해주는 기능-->
+        <input type="text" name="" id="in3" onchange="changeUp()">
+        <script>
+            function changeUp(){
+                var value= document.getElementById('in3').value;
+                document.getElementById('in3').value=value.toUpperCase();
+            }
+        </script>
+
+        <hr>
+
+         <!-- 마우스 이벤트 -->
+         <div style="width: 200px; height:100px; background-color:yellow" onmouseover="over(this)" onmouseout="out(this)" onmousemove="move(this)"></div>
+         <script>
+             function over(e){
+                e.style.backgroundColor="lightgreen";
+                e.style.border="2px solid red";
+             }
+             function out(e){
+                e.style.backgroundColor="yellow";
+                e.style.border="";
+             }
+             var a=0;
+             function move(e){
+                 a++;
+                 e.innerHTML=a+"";
+             }
+         </script>
+
+         <!-- 사용자가 회원가입 같은 것을 할때 입력폼을 사용함. 이때.. 특정 형식에 마즌ㄴ지 검증. [ 유효성 검사 ]-->
+         
+
+         
+ 
+
+
+
+    </body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Drag & Drop</title>
+
+        <style>
+            div#cart{
+                width:400px; height: 150px; padding: 10px;
+                border: 1px solid red;
+            }
+        </style>
+
+        <script>
+            var id;
+            var overTarget = false;
+
+            function startDrag(){
+                //드래그 이벤트를 발생시킨 요소의 id를 전역변수에 저장
+                id= event.target.id;                
+            }
+
+            function endDrag(){
+                //타겟(#cart) 요소위에 올라갔는지 확인
+                if(overTarget){
+                    //저장된 id를 이용하여 요소를 찾아오기
+                    var e= document.getElementById(id);
+                    //찾은 e 요소를 #cart 라는 div 요소의 자식요소로 추가
+                    document.getElementById('cart').appendChild(e);
+
+                    overTarget=false;
+                }                
+            }
+
+            function overDrag(){                
+                overTarget= true;
+                // 요소 위에 요소가 드롭되는 것이 금지되어 있는 기본설정값을 무력화 하기
+                event.preventDefault();
+            }
+
+            function leaveDrag(){
+                overTarget= false;
+            }
+        </script>
+
+    </head>
+    <body>        
+        <div id="cart" ondragover="overDrag()" ondragleave="leaveDrag()"></div>
+
+        <img src="./ms19.png" alt="a" width="150" height="150" id="img1" ondragstart="startDrag()" ondragend="endDrag()">
+        <img src="./ms21.png" alt="b" width="150" height="150" id="img2" ondragstart="startDrag()" ondragend="endDrag()">
+
+    </body>
+</html>

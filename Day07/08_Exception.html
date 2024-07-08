@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Exception</title>
+
+        <script>
+
+            // 예외처리! -- 에러가 발생했을대 프로그램이 다운되지 않도록 하는 기법
+            document.write("예외처리 연습<hr>");
+
+            try {
+                aler('aa');// 여기서 에러발생.. 하면 다음줄부터 코드가 실행되지 않음    
+            } catch (e) {
+                document.write("예외발생 : "+e+"<br>");
+            }
+
+            //finally
+            try {
+                aler();
+            } catch (e) {
+                document.write("예외발생");
+            }finally{
+                document.write("예외가 있든 없든 무조건 실행되는 영역"+"<br>");
+            }
+            
+            // thrwo - 원래 예외상황이 아닌데 억지로 예외를 발동시키는 기법
+            try{
+                var a=10;
+                var b=15;
+
+                var c=a-b;
+                if(c<0) throw "음수결과는 안됨.!!"
+
+                document.write("결과 : " + c +"<br>");
+            }catch (e){
+                document.write("예외 : " + e + "<br>");
+            }
+
+            document.write("<br>프로그램 정상 종료.</br>");
+
+        
+        </script>
+
+        <!-- chapter 8. 연습문제 풀이. p.372 -->
+
+    </head>
+    <body>
+        
+
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS 작성 위치</title>
+
+        <!-- 스타일을 적용하는 3가지 방법 -->
+        <!-- 1. 외부스타일 시트 -->
+        <!-- 2. 내부스타일 시트 -->
+        <!-- 3. 인라인스타일 시트 -->
+
+        <!-- 외부 스타일 : 별도의 .css 문서에 스타일 작성하고 연결 -->
+        <link rel="stylesheet" href="./02_test.css">
+
+        <!-- 내부 스타일 : <syle>요소안에 스타일 작성 [반드시 head 영역에 작성하여야 하는것은 아님] -->
+        <style>
+            p{font-size: 20px; color: red;}
+        </style>
+
+    </head>
+
+    <body>
+
+        <!-- 인라인 스타일 : HTML요소의 속성으로 style 을 적용 -우선순위가 가장 높음 -->
+        <p style="font-style:italic;color: green;">Hello world</p>
+
+        <!-- 스타일시트 적용을 body 영역 안에서 할 수 있음 -->
+        <style>
+            p{font-weight: bold; color: brown;}
+        </style>
+
+        <link rel="stylesheet" href="./02_test.css">
+
+    </body>
+
+</html>

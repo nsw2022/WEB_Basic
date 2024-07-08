@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Font CSS</title>
+
+        <style>
+            p{font-family: "Bauhaus 93", sans-serif;}
+            p{font-family: "Gigi",sans-serif;}
+            p{font-family: monospace;}
+
+            /* 디바이스마다 설치된 폰트가 다르기에 설정한 포늩가 적용되지 않을 수 있음 */
+            /* 그래서 사용하는 것이 [웹폰트] */ 
+
+            @font-face{
+                font-family: "My Font";
+                src: url("font/kmi_bold.ttf");
+            }
+            p{font-family: "My Font",serif;}
+
+            /* 폰트 사이즈 */
+            p{font-size: 16px;}
+            p{font-size: 120%;}
+            p{font-size: 2.0em;} /*2.0배*/
+
+            /* bold, normal */
+            p{font-weight: bold;}
+
+            /* italic, normal */
+            p{font-style: italic;}
+
+            /* 위 폰트관련 속성들을 한방에 축약형으로 이용 [순서 : weight style size family]- 필요한 것만 선택하여 적용도 가능*/
+            p{font: bold italic 1.5em "My Font", serif;}
+
+            /* 텍스트 정렬 [ 가로축 정렬 ] */
+            p{text-align:right;}
+            p{text-align: justify;} /*양쪽정렬*/
+            p{text-align: center;}
+            
+            /* 대소문자 변환 */
+            p{text-transform: uppercase;}
+            p{text-transform: lowercase;}
+            p{text-transform: capitalize;}
+
+            /* 텍스트에 줄긋기 */
+            p{text-decoration: underline;}
+            p{text-decoration: overline;}
+            p{text-decoration: line-through;}
+
+            /* 텍스트 그림자 */
+            p{text-shadow: 5px 3px 5px red;}
+
+            /* 워드 랩 */
+            p.aaa{
+                width: 5em;
+                border: 1px solid blue;
+                word-wrap: break-word;/*워드랩이 없으면 영어 긴글ㅆ니ㅡㄴ 영역을 벗어남*/
+            }
+
+            /* 다중 컬룸 */
+            #kkk{
+                column-count: 2;
+                column-gap: 80px;
+                column-rule: 4px dashed green;
+            }
+
+
+
+
+
+
+        </style>
+
+    </head>
+
+    <body>
+        
+        <p>Hello World</p>
+        <p>안녕하세요</p>
+
+        <!-- word wrap -->
+        <p class="aaa">
+            한글은 전혀 문제없이 자동 워드 랩 됨.
+            Hiaslkdg fasldgkasdlkfjwqek;lfkja;sldkgja
+        </p>
+
+        <!-- 다중컬룸 -->
+        <p id="kkk">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur incidunt eos velit magni dignissimos praesentium aliquid corporis culpa eaque vero reiciendis atque deleniti, impedit, libero beatae. Praesentium nam facilis dolorem!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. A unde aperiam provident delectus facere perspiciatis corrupti sint blanditiis voluptate excepturi dolor ipsum laborum sequi vel laudantium debitis, praesentium quo omnis!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, expedita temporibus iusto deleniti sunt dolore quod, nobis consequatur ratione vero aspernatur officiis nisi possimus, inventore pariatur! In omnis culpa quasi.
+        </p>
+
+
+    </body>
+</html>

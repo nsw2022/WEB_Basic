@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS 기초</title>
+
+        <!-- 웹문서(HTML)에 스타일 적용하기 [스타일을 지정하는 언어(문법) : CSS] -->
+
+        <!-- 스타일 작성 영역 -->
+        <style>
+            /* 이 영역 안에서는 CSS언어의 문법 체계를 따름. */
+
+            /* 기본 문법 -  선택자{속성:값;} */
+
+            /* 선택자의 종류 */
+            /* 1. 타입(요소) 선택자 */
+            h2{color: red;}
+            p{color: blue; font-family: serif;}
+
+            /* 2. 전체 선택자 */
+            *{font-style: italic; color: yellow;}/*같은 속성의 스타일을 적용했을때는 개별 선택자가 우선 적용*/
+
+            /* 3. 아이디 선택자 */
+            #p1{color: green;}
+
+            /* 4. 클래스 선택자 */
+            .aa{color: violet;}
+            /* p 요소중에서 class가 aa 인 요소선택 */
+            p.aa{background-color: yellow;}
+
+            /* 5. 선택자 그룹 */
+            li, a{color: gray;}
+
+            /* 6. 자식, 자손 선택자 */
+            #ss>p{color: black;}
+            #ss p{color: lime;}
+
+            /* 아래 두개의 선택자는 오나전 다른 선택임 */
+            p.aa{} /*p요소 중에서 calss가 aa 인 요소 선택*/
+            p aa{} /*p요소의 자손들 중에서 class가 aa인 요소 선택*/
+
+            /* 조금 복잡한 선택자 */
+            #kk ul.gg>li{background-color: aqua;}
+
+            /* 7. 속성 선택자 */
+            p[class]{font-size: 30px;}/*p요소 중에서 class 속성을 가진 요소*/
+            div[id="ss"]{font-weight: bold;}/*id가 ss인 div 요소*/
+
+            /* 8. 의사(pseudo-class(가짜를 뜻함)) 선택자 */
+            a:link{color: blue;}
+            a:visited{color: brown;}
+
+            a:hover{color: green;}
+            a:active{color: red;}
+            /* anchor 요소에 의사선택자를 사용할때는 반드시 순서가 맞아야 함. */
+
+            /* 자식/자손 선택자를 이요할때 몇번째 자식/자손인지를 구별하여 선택 */
+            #kk ul li:first-child{color: red;}
+            #kk ul li:last-child{color: blue;}
+            #kk ul li:nth-child(2){color: green;}
+
+            /*자식 선택할때 수식을 이용하기도 함*/
+            table tr:nth-child(2n+1){background-color: aqua;}/*n값은 자동으로 0,1,2,3,4.....*/
+
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <h2 class="aa">CSS Selector TEST</h2>
+
+        <p id="p1">Hello world</p>
+        <p class="aa">Nice to meet you</p>
+
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ul>
+
+        <a href="">naver</a>
+
+        <!-- 자식/자손 선택자 연습용 요소들 -->
+        <div id="ss">
+            <h4>Region</h4>
+            <p>Hello world</p>
+            <div>
+                <p>Apple</p>
+                <p>Banana</p>
+                <p>Orange</p>
+            </div>
+        </div>
+        
+        <!-- 조금더 복잡한 자손선택자 연습 -->
+        <div id="kk">
+            <ul>
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ul>
+        
+            <ul class="gg">
+                <li>uuu</li>
+                <li>ppp</li>
+                <li>www</li>
+            </ul>
+        </div>
+
+        <a href="https://www.google.com" id="hh">Google</a>
+
+        <table border="1">
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+        </table>
+
+    </body>
+</html>

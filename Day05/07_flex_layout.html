@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sample Page</title>
+
+        <style>
+
+            body{
+                margin: 0px;
+                font-family: 'Times New Roman', Times, serif;
+            }
+
+            header{                
+                background: #1abc9c;
+                display: flex;
+                height: 10em;  
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: white;
+            }
+
+            nav{
+                display: flex;
+                background-color: #333333;
+            }
+
+            nav a{
+                color: white;
+                padding: 14px 20px;
+                text-decoration: none;
+                text-align: center;
+            }
+
+            nav a:hover{
+                background-color: #dddddd;
+                color: black;
+            }
+
+            .container{
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            aside{
+                flex: 3;
+                background-color: #f1f1f1;
+                padding: 20px;
+            }
+
+            #main{
+                flex: 7;
+                background-color: white;
+                padding: 20px;
+            }
+
+            .fakeimg{
+                background-color: #aaaaaa;
+                width: 100%;
+                padding: 20px;
+            }
+
+            aside .fakeimg{margin-bottom: 10px;}
+
+            footer{
+                padding:20px;
+                text-align: center;
+                background-color: #dddddd;
+            }
+
+            /* 반응형 웹 - 미디어 쿼리 */
+            @media screen and (max-width:700px) {
+                .container, nav{
+                    flex-direction: column;
+                }
+            }
+
+
+        </style>
+
+    </head>
+    <body>
+        
+        <!-- Header -->
+        <header>
+            <h1>My Web site</h1>
+            <p>With a <strong>flexible</strong> layout</p>
+        </header>
+
+        <!-- navigation bar -->
+        <nav>
+            <a href="#">Link</a>
+            <a href="#">Link</a>
+            <a href="#">Link</a>
+            <a href="#">Link</a>
+        </nav>
+
+        <!-- flex 를 이용하여 aside와 article 요소를 옆으로 배치 -->
+        <div class="container">
+            <!-- 왼쪽 사이드 -->
+            <aside>
+                <h2>About Me</h2>
+                <h5>Photo of me:</h5>
+                <div class="fakeimg" style="height:200px;">
+                    <img src="" alt="image">
+                </div>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic distinctio voluptate a rerum? Consequuntur quia amet voluptatibus fugit tempora et dolorem modi. Ipsum harum quis nam aspernatur sint quo. Pariatur.</p>
+
+                <h3>More Text</h3>
+                <p>This is Sample link</p>
+                <div class="fakeimg" style="height: 60px;">
+                    <img src="" alt="image">
+                </div>
+                <div class="fakeimg" style="height: 60px;">
+                    <img src="" alt="image">
+                </div>
+                <div class="fakeimg" style="height: 60px;">
+                    <img src="" alt="image">
+                </div>
+            </aside>
+
+            <!-- 본문 영역 -->
+            <article id="main">
+                <h2>TITLE HEADING</h2>
+                <h5>Title description, 2023-03-10</h5>
+                <div class="fakeimg" style="height: 200px;">
+                    <img src="" alt="image">
+                </div>
+                <p>Some text......</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores atque voluptatem eveniet sit molestias, ipsa pariatur impedit dolore quis, porro culpa fugiat. Aperiam voluptatum cum, animi veniam quia voluptates ratione?</p>
+                <br>
+
+                <h2>TITLE HEADING</h2>
+                <h5>Title description, 2023-03-10</h5>
+                <div class="fakeimg" style="height: 200px;">
+                    <img src="" alt="image">
+                </div>
+                <p>Some text......</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores atque voluptatem eveniet sit molestias, ipsa pariatur impedit dolore quis, porro culpa fugiat. Aperiam voluptatum cum, animi veniam quia voluptates ratione?</p>
+                <br>
+
+            </article>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <h2>Footer</h2>
+        </footer>
+
+    </body>
+</html>
